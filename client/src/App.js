@@ -7,19 +7,20 @@ function App() {
   const [sentiment, setSentiment] = useState(null);
 
   const analyzeSentiment = async () => {
-      try {
-          const response = await axios.post('https://api-inference.huggingface.co/models/distilbert-base-uncased-finetuned-sst-2-english', {
-              inputs: text
-          }, {
-              headers: {
-                  'Authorization': `Bearer ${process.env.REACT_APP_HUGGINGFACE_API_KEY}`
-              }
-          });
-          setSentiment(response.data);
-      } catch (error) {
-          console.error('Error analyzing sentiment:', error);
-      }
-  };
+    if (!text.trim()) {
+        console.error('Input text is empty');
+        return;
+    }
+
+    console.log('Button clicked, analyzing sentiment...');
+    try {
+        const response = await axios.post('http://localhost:5000/analyze', { text });
+        console.log('Response received:', response.data);
+        setSentiment(response.data);
+    } catch (error) {
+        console.error('Error analyzing sentiment:', error.response ? error.response.data : error.message);
+    }
+};
 
 
     return (
