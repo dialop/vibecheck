@@ -12,24 +12,21 @@ app.use(express.json());
 
 //Endpoints
 app.post('/analyze', async (req, res) => {
-    const { text } = req.body; 
-
+    const { text } = req.body;
     try {
         const response = await axios.post('https://api-inference.huggingface.co/models/distilbert-base-uncased-finetuned-sst-2-english', {
-        input: text
-    }, {
-        headers: {
-            'Authorization': `Bearer ${process.env.HUGGINGFACE_API_KEY}`
-        }
-    });
-
-    res.json(response.data); 
-} catch(error) {
-    res.status(500).send('Error analyzing sentiment');
-
-}
-
-}); 
+            inputs: text
+        }, {
+            headers: {
+                'Authorization': `Bearer ${process.env.HUGGINGFACE_API_KEY}`
+            }
+        });
+        res.json(response.data);
+    } catch (error) {
+        console.error('Error analyzing sentiment:', error.response ? error.response.data : error.message);
+        res.status(500).send('Error analyzing sentiment');
+    }
+});
 
 
 //Server 
