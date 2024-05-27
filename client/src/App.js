@@ -29,13 +29,17 @@ function App() {
                 <h1 className="text-3xl font-bold underline"> Sentiment Analysis</h1>
                 <textarea 
                 className="mt-4 p-2 boarder border-gray-300 rounded"
-                value={text} onChange={(e) => 
-                setText(e.target.value)} 
+                value={text} 
+                onChange={(e) => setText(e.target.value)} 
                 placeholder="Enter text here">
                 </textarea>
-                <button onClick={analyzeSentiment}>Analyze Sentiment</button>
+                <button 
+                className="mt-4 p-2 bg-blue-500 text-white rounded hover:bg-blue-700"
+                onClick={analyzeSentiment}>
+                  Analyze Sentiment
+                  </button>
                 {sentiment && (
-                    <div>
+                    <div className="mt-4">
                         <h2>Sentiment Analysis Result:</h2>
                         <pre>{JSON.stringify(sentiment, null, 2)}</pre>
                     </div>
