@@ -26,7 +26,7 @@ function App() {
     return (
         <div className="App">
             <header className="App-header">
-                <h1>Sentiment Analysis</h1>
+                <h1 className="text-3xl font-bold underline"> Sentiment Analysis</h1>
                 <textarea value={text} onChange={(e) => setText(e.target.value)} placeholder="Enter text here"></textarea>
                 <button onClick={analyzeSentiment}>Analyze Sentiment</button>
                 {sentiment && (
