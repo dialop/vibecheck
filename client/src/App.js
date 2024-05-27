@@ -27,7 +27,12 @@ function App() {
         <div className="App">
             <header className="App-header">
                 <h1 className="text-3xl font-bold underline"> Sentiment Analysis</h1>
-                <textarea value={text} onChange={(e) => setText(e.target.value)} placeholder="Enter text here"></textarea>
+                <textarea 
+                className="mt-4 p-2 boarder border-gray-300 rounded"
+                value={text} onChange={(e) => 
+                setText(e.target.value)} 
+                placeholder="Enter text here">
+                </textarea>
                 <button onClick={analyzeSentiment}>Analyze Sentiment</button>
                 {sentiment && (
                     <div>
