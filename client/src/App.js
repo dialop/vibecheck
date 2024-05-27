@@ -28,7 +28,7 @@ function App() {
             <header className="App-header">
                 <h1 className="text-3xl font-bold underline"> Sentiment Analysis</h1>
                 <textarea 
-                className="mt-4 p-2 boarder border-gray-300 rounded"
+                className="mt-4 p-2 boarder text-black border-gray-300 rounded"
                 value={text} 
                 onChange={(e) => setText(e.target.value)} 
                 placeholder="Enter text here">
@@ -40,7 +40,7 @@ function App() {
                   </button>
                 {sentiment && (
                     <div className="mt-4">
-                        <h2>Sentiment Analysis Result:</h2>
+                        <h2 className="text-2xl">Sentiment Analysis Result:</h2>
                         <pre>{JSON.stringify(sentiment, null, 2)}</pre>
                     </div>
                 )}
