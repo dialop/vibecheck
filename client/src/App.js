@@ -13,6 +13,10 @@ function App() {
         console.error('Input text is empty');
         return;
     }
+    
+    setError(null);
+    setLoading(true);
+
 
     console.log('Button clicked, analyzing sentiment....');
     
