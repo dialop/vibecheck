@@ -5,6 +5,8 @@ import './App.css';
 function App() {
   const [text, setText] = useState('');
   const [sentiment, setSentiment] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
 
   const analyzeSentiment = async () => {
     if (!text.trim()) {
