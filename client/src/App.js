@@ -12,7 +12,8 @@ function App() {
         return;
     }
 
-    console.log('Button clicked, analyzing sentiment...');
+    console.log('Button clicked, analyzing sentiment....');
+    
     try {
         const response = await axios.post('http://localhost:5000/analyze', { text });
         console.log('Response received:', response.data);
