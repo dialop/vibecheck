@@ -11,6 +11,8 @@ const PORT = process.env.PORT || 5000;
 app.use(cors());
 app.use(express.json());
 
+console.log('Using API Key:', process.env.HUGGINGFACE_API_KEY);
+
 //Endpoints
 app.post('/analyze', async (req, res) => {
     const { text } = req.body;
@@ -24,11 +26,10 @@ app.post('/analyze', async (req, res) => {
         });
         res.json(response.data);
     } catch (error) {
-        console.error('Error analyzing sentiment:', error.response ? error.response.data : error.message);
+        console.error('Error analyzing sentiment:', error.response ? error.response.data : error.message, error.response || error);
         res.status(500).send('Error analyzing sentiment');
     }
 });
-
 
 //Server 
 app.listen(PORT, () => {
