@@ -18,7 +18,7 @@ function App() {
     setLoading(true);
 
 
-    console.log('Button clicked, analyzing sentiment....');
+    console.log('Button clicked, analyzing ...');
     
     try {
         const response = await axios.post('http://localhost:5000/analyze', { text });
