@@ -1,0 +1,28 @@
+{
+  "name": "vibecheck",
+  "version": "1.0.0",
+  "description": "Sentiment Analysis Web App",
+  "main": "server/server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server/server.js",
+    "client": " cd src && npm start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dialop/vibecheck.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dialop/vibecheck/issues"
+  },
+  "homepage": "https://github.com/dialop/vibecheck#readme",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1"
+  }
+}
