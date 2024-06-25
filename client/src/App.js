@@ -10,7 +10,6 @@ function App() {
 
   const analyzeSentiment = async () => {
     if (!text.trim()) {
-        console.error('Input text is empty');
         return;
     }
 
@@ -37,6 +36,8 @@ const clearInput = () => {
     setSentiment(null);
     setError(null);
 };
+
+
 
 return (
     <div className="App">
