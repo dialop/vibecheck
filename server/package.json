@@ -1,10 +1,11 @@
 {
   "name": "vibecheck",
   "version": "1.0.0",
-  "description": "Sentiment analysis web application",
+  "description": "Mental Health Chatbox",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "dev": "nodemon index.js"
   },
   "dependencies": {
     "axios": "^0.21.1",
@@ -13,5 +14,8 @@
     "express": "^4.19.2",
     "mongoose": "^8.4.4",
     "openai": "^4.52.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.4"
   }
 }
