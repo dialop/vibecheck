@@ -1,5 +1,5 @@
 const express = require('express');
-const mongoose = require('mongoose');
+const { Pool } = require('pg');
 const cors = require('cors');
 const { Configuration, OpenAIApi } = require('openai');
 
@@ -14,41 +14,14 @@ const configuration = new Configuration({
 });
 const openai = new OpenAIApi(configuration);
 
-mongoose.connect(process.env.MONGODB_URI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
+// PostgreSQL connection pool
+const pool = new Pool({
+  connectionString: process.env.DATABASE_URL,
 });
 
-const MessageSchema = new mongoose.Schema({
-  user: String,
-  message: String,
-  response: String,
-});
 
-const Message = mongoose.model('Message', MessageSchema);
+const PORT = process.env.PORT || 5000;
 
-app.post('/api/chat', async (req, res) => {
-  const { message } = req.body;
-
-  const response = await openai.createCompletion({
-    model: "text-davinci-003",
-    prompt: message,
-    max_tokens: 150,
-  });
-
-  const chatResponse = response.data.choices[0].text.trim();
-
-  const newMessage = new Message({
-    user: 'User', // Replace with actual user identifier if available
-    message,
-    response: chatResponse,
-  });
-
-  await newMessage.save();
-
-  res.json({ response: chatResponse });
-});
-
-app.listen(5000, () => {
-  console.log('Server is running on port 5000');
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
 });
