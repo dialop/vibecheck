@@ -14,7 +14,6 @@ const configuration = new Configuration({
 });
 const openai = new OpenAIApi(configuration);
 
-// PostgreSQL connection pool
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
 });
